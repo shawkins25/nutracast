@@ -3,7 +3,7 @@ export async function POST(req) {
     const { name, question } = await req.json();
 
     const body = {
-      from: "Nutracast Form <noreply@resend.dev>",
+      from: "Nutracast Form <nutracast@nutramaxlabs.com>",
       to: "shawkins@nutramaxlabs.com",
       subject: `New Nutracast Question from ${name}`,
       text: `Name: ${name}\n\nQuestion:\n${question}`,

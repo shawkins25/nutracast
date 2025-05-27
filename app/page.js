@@ -22,6 +22,7 @@ export default function Home() {
             <PodcastPlayer />
           </div>
           <div className={classes.section}>
+            
           </div>
         </div>
         <div className={classes.socials_container}>
