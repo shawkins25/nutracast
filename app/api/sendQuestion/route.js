@@ -57,7 +57,7 @@ export async function POST(req) {
    },
    body: JSON.stringify({
      from: "Nutracast Form <onboarding@resend.dev>",
-     to: "amorgan@nutramaxlabs.com",
+     to: "shawkins@nutramaxlabs.com",
      subject: `New Question from ${name}`,
      text: `Name: ${name}\n\nQuestion:\n${question}`,
    }),
@@ -67,4 +67,5 @@ export async function POST(req) {
    return new Response("Email failed", { status: 500 });
  }
  return new Response(JSON.stringify({ success: true }), { status: 200 });
+ 
 }
