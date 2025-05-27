@@ -74,7 +74,8 @@ export async function POST(req) {
       body: JSON.stringify(body),
     });
 
-    console.log("Email API response status:", res.status);
+    const responseData = await res.json();
+    console.log("Email API full response:", responseData);
 
     if (!res.ok) {
       const errorText = await res.text();
