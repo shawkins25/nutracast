@@ -49,20 +49,20 @@ import nodemailer from "nodemailer";
 
 export async function POST(req) {
   try {
-    console.log("Incoming request received.");
+    // console.log("Incoming request received.");
 
     const { name, question } = await req.json();
 
-    console.log("Parsed request body:", { name, question });
+    // console.log("Parsed request body:", { name, question });
 
     const body = {
       from: "Nutracast Form <shawkins@nutramaxlabs.com>",
-      to: "hawki2sl89@gmail.com",
-      subject: `New Question from ${name}`,
+      to: "kyhansen@nutramaxlabs.com",
+      subject: `New Nutracast Question from ${name}`,
       text: `Name: ${name}\n\nQuestion:\n${question}`,
     };
 
-    console.log("Sending email with body:", body);
+    // console.log("Sending email with body:", body);
 
     const res = await fetch("https://api.resend.com/emails", {
       method: "POST",
@@ -75,7 +75,7 @@ export async function POST(req) {
     });
 
     const responseData = await res.json();
-    console.log("Email API full response:", responseData);
+    // console.log("Email API full response:", responseData);
 
     if (!res.ok) {
       const errorText = await res.text();
@@ -83,7 +83,7 @@ export async function POST(req) {
       return new Response("Email failed", { status: 500 });
     }
 
-    console.log("Email sent successfully.");
+    // console.log("Email sent successfully.");
 
     return new Response(JSON.stringify({ success: true }), { status: 200 });
   } catch (error) {
