@@ -48,24 +48,46 @@ import nodemailer from "nodemailer";
 // }
 
 export async function POST(req) {
- const { name, question } = await req.json();
- const res = await fetch("https://api.resend.com/emails", {
-   method: "POST",
-   headers: {
-     Authorization: `Bearer ${process.env.RESEND_API_KEY}`,
-     "Content-Type": "application/json",
-   },
-   body: JSON.stringify({
-     from: "Nutracast Form <onboarding@resend.dev>",
-     to: "shawkins@nutramaxlabs.com",
-     subject: `New Question from ${name}`,
-     text: `Name: ${name}\n\nQuestion:\n${question}`,
-   }),
- });
- if (!res.ok) {
-   console.error(await res.text());
-   return new Response("Email failed", { status: 500 });
- }
- return new Response(JSON.stringify({ success: true }), { status: 200 });
- 
+  try {
+    console.log("Incoming request received.");
+
+    const { name, question } = await req.json();
+
+    console.log("Parsed request body:", { name, question });
+
+    const body = {
+      from: "Nutracast Form <onboarding@resend.dev>",
+      to: "shawkins@nutramaxlabs.com",
+      subject: `New Question from ${name}`,
+      text: `Name: ${name}\n\nQuestion:\n${question}`,
+    };
+
+    console.log("Sending email with body:", body);
+
+    const res = await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${process.env.RESEND_API_KEY}`,
+        "Content-Type": "application/json",
+      },
+
+      body: JSON.stringify(body),
+    });
+
+    console.log("Email API response status:", res.status);
+
+    if (!res.ok) {
+      const errorText = await res.text();
+      console.error("Email send failed:", errorText);
+      return new Response("Email failed", { status: 500 });
+    }
+
+    console.log("Email sent successfully.");
+
+    return new Response(JSON.stringify({ success: true }), { status: 200 });
+  } catch (error) {
+    console.error("Unexpected error occurred:", error);
+
+    return new Response("Internal Server Error", { status: 500 });
+  }
 }
