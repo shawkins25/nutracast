@@ -1,0 +1,33 @@
+:root {
+  --primary: #086c3c;
+  --accent: #0c2f1f;
+  --background: #e7e7e9;
+  --text: #1c1c1c;
+  --muted-text: #666;
+  --highlight: #9de65f;
+  --white: #ffffff;
+}
+
+
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
