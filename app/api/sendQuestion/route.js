@@ -56,7 +56,7 @@ export async function POST(req) {
      "Content-Type": "application/json",
    },
    body: JSON.stringify({
-     from: "Your App <your@verifieddomain.com>",
+     from: "Nutracast Form <onboarding@resend.dev>",
      to: "amorgan@nutramaxlabs.com",
      subject: `New Question from ${name}`,
      text: `Name: ${name}\n\nQuestion:\n${question}`,
