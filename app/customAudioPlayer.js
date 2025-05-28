@@ -20,29 +20,44 @@ const CustomAudioPlayer = ({
   const [playbackRate, setPlaybackRate] = useState(1);
   const [isRepeat, setIsRepeat] = useState(false);
   const [isShuffle, setIsShuffle] = useState(false);
+  const [isLiked, setIsLiked] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
   const [volume, setVolume] = useState(0.75);
 
   useEffect(() => {
     const audio = audioRef.current;
-
     if (!audio) return;
-
-    if (audioRef.current) {
-      audioRef.current.playbackRate = playbackRate;
-    }
-
+    audio.playbackRate = playbackRate;
     const updateTime = () => setCurrentTime(audio.currentTime);
     const updateDuration = () => setDuration(audio.duration);
+    const handlePlay = () => setIsPlaying(true);
+    const handlePause = () => setIsPlaying(false);
     audio.addEventListener("timeupdate", updateTime);
     audio.addEventListener("loadedmetadata", updateDuration);
-
+    audio.addEventListener("play", handlePlay);
+    audio.addEventListener("pause", handlePause);
     return () => {
       audio.removeEventListener("timeupdate", updateTime);
       audio.removeEventListener("loadedmetadata", updateDuration);
+      audio.removeEventListener("play", handlePlay);
+      audio.removeEventListener("pause", handlePause);
     };
-  }, []);
+  }, [playbackRate]);
+
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (!audio) return;
+    const tryPlay = async () => {
+      try {
+        audio.currentTime = 0;
+        await audio.play(); // play event will update isPlaying
+      } catch (err) {
+        console.warn("Autoplay blocked by browser on episode change:", err);
+      }
+    };
+    tryPlay();
+  }, [episode]);
 
   const togglePlayback = () => {
     if (!audioRef.current) return;
@@ -54,9 +69,7 @@ const CustomAudioPlayer = ({
     setIsPlaying(!isPlaying);
   };
 
-  const toggleShuffle = () => {
-    setIsShuffle(!isShuffle);
-  };
+  const toggleShuffle = () => setIsShuffle(!isShuffle);
 
   const toggleRepeat = () => {
     if (audioRef.current) {
@@ -79,23 +92,24 @@ const CustomAudioPlayer = ({
       audioRef.current.volume = newVolume;
     }
     setVolume(newVolume);
-    // Set dynamic background for volume slider fill
     const percentage = newVolume * 100;
     e.target.style.background = `linear-gradient(to right, #086c3c 0%, #086c3c ${percentage}%, #000 ${percentage}%, #000 100%)`;
   };
 
   const downloadEpisode = () => {
+    const audioUrl = episode.enclosure?.[0]?.$?.url ?? "#";
+    const title = episode.title?.[0] ?? "episode";
     const link = document.createElement("a");
-    link.href = episode.enclosure.link;
+    link.href = audioUrl;
     link.target = "_blank";
-    link.rel = "noopener noreffer";
-    link.download = `${episode.title}.mp3`;
+    link.rel = "noopener noreferrer";
+    link.download = `${title}.mp3`;
     link.click();
     document.body.removeChild(link);
   };
 
   const handleSpeedChange = () => {
-    const rates = [1, 1.5, 2, 0.75]; // You can adjust this array
+    const rates = [1, 1.5, 2, 0.75];
     const currentIndex = rates.indexOf(playbackRate);
     const nextIndex = (currentIndex + 1) % rates.length;
     const nextRate = rates[nextIndex];
@@ -114,15 +128,15 @@ const CustomAudioPlayer = ({
     return `${minutes}:${seconds}`;
   };
 
-  function removePTags(str) {
-    return str.replace(/<\/?p>/g, "");
-  }
+  const removePTags = (str) => str.replace(/<\/?p>/g, "");
 
-  const description = removePTags(episode.description);
+  const title = episode.title?.[0] ?? "";
+  const description = removePTags(episode.description?.[0] ?? "");
+  const audioSrc = episode.enclosure?.[0]?.$?.url ?? "";
 
   return (
     <div className={classes.episode}>
-      <h2 className={classes.episodeTitle}>{episode.title}</h2>
+      <h2 className={classes.episodeTitle}>{title}</h2>
       <p className={classes.episodeDesc}>{description}</p>
       <button
         onClick={handleSpeedChange}
@@ -141,7 +155,6 @@ const CustomAudioPlayer = ({
             onChange={handleSeek}
             className={classes.progressBar}
           />
-
           <div className={classes.timeLabels}>
             <span className={classes.progress_time}>
               {formatTime(currentTime)}
@@ -175,7 +188,13 @@ const CustomAudioPlayer = ({
           {isPlaying ? <MdPause /> : <MdPlayArrow />}
         </button>
         <button
-          onClick={skipToNextEpisode}
+          onClick={() => {
+            if (isShuffle) {
+              skipToNextEpisode("shuffle");
+            } else {
+              skipToNextEpisode();
+            }
+          }}
           className={classes.skipButton}
           aria-label="Next Episode"
         >
@@ -186,16 +205,14 @@ const CustomAudioPlayer = ({
           className={classes.controlButton}
           aria-label="Toggle Repeat"
         >
-          {isRepeat ? (
-            <LuRepeat1 color={isRepeat ? "#086c3c" : "#1c1c1c"} />
-          ) : (
-            <LuRepeat />
-          )}
+          {isRepeat ? <LuRepeat1 color={"#086c3c"} /> : <LuRepeat />}
         </button>
         <div className={classes.bottomControls}>
           <button
-            onClick={downloadEpisode}
-            className={classes.controlButton}
+            onClick={() => setIsLiked(!isLiked)}
+            className={`${classes.controlButton} ${
+              isLiked ? classes.liked : classes.notLiked
+            }`}
             aria-label="Like Episode"
           >
             <FaHeart />
@@ -222,12 +239,18 @@ const CustomAudioPlayer = ({
       </div>
       <audio
         ref={audioRef}
-        src={episode.enclosure.link}
+        src={audioSrc}
         preload="metadata"
-        onEnded={() => setIsPlaying(false)}
+        onEnded={() => {
+          if (isShuffle) {
+            const randomIndex = Math.floor(Math.random() * 100000);
+            skipToNextEpisode("shuffle", randomIndex);
+          } else {
+            skipToNextEpisode();
+          }
+        }}
       />
     </div>
   );
 };
-
 export default CustomAudioPlayer;

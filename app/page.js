@@ -3,8 +3,8 @@
 import JoinDiscussion from "./joinDiscussion";
 import PodcastPlayer from "./podcastPlayer";
 import classes from "./page.module.css";
-import logo from "./assets/NC_Logo.webp"
-
+import logo from "./assets/NC_Logo.webp";
+import Image from "next/image";
 
 export default function Home() {
   return (
@@ -12,8 +12,9 @@ export default function Home() {
       <div className={classes.container}>
         <div className={classes.logo}></div>
         <div className={classes.header}>
-          <img src= {logo}/>
-          <h1>NUTRACAST</h1>
+          <div className={classes.logo_container}>
+            <Image src={logo} alt={"Logo"} fill priority />
+          </div>
           <p>MINISTERING | EQUIPPING | INSTRUCTING</p>
         </div>
         <div className={classes.section_container}>

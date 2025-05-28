@@ -1,32 +1,44 @@
-import CustomAudioPlayer from "./customAudioPlayer";
-import EpisodeList from "./episodeList"; // new
 import { useEffect, useState } from "react";
+import { parseStringPromise } from "xml2js";
+import CustomAudioPlayer from "./customAudioPlayer";
+import EpisodeList from "./episodeList";
 import classes from "./page.module.css";
 
-const PODCAST_FEED_URL =
-  "https://api.rss2json.com/v1/api.json?rss_url=https://feed.podbean.com/nutracast/feed.xml";
+const RSS_FEED_URL = "https://feed.podbean.com/nutracast/feed.xml";
 
 const PodcastPlayer = ({ showList = false }) => {
   const [episodes, setEpisodes] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
-
-  console.log("Episode List: ", episodes);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const fetchEpisodes = async () => {
+    const fetchFeed = async () => {
       try {
-        const res = await fetch(PODCAST_FEED_URL);
-        const data = await res.json();
-        setEpisodes(data.items || []);
+        const res = await fetch(RSS_FEED_URL);
+        const xml = await res.text();
+        const parsed = await parseStringPromise(xml);
+        const items = parsed.rss.channel[0].item;
+        setEpisodes(items);
       } catch (err) {
-        console.error("Failed to load podcast feed:", err);
+        console.error("Failed to fetch or parse RSS feed:", err);
+      } finally {
+        setIsLoading(false);
       }
     };
-    fetchEpisodes();
+    fetchFeed();
   }, []);
 
-  const skipToNextEpisode = () => {
-    setCurrentIndex((prev) => (prev + 1) % episodes.length);
+  const skipToNextEpisode = (mode = "next", randomSeed) => {
+    setCurrentIndex((prev) => {
+      if (mode === "shuffle") {
+        let newIndex;
+        do {
+          newIndex = Math.floor(Math.random() * episodes.length);
+        } while (newIndex === prev && episodes.length > 1); // Avoid repeat
+        return newIndex;
+      }
+      return (prev + 1) % episodes.length;
+    });
   };
 
   const skipToPrevEpisode = () => {
@@ -35,14 +47,22 @@ const PodcastPlayer = ({ showList = false }) => {
 
   return (
     <div className={classes.episodesWrapper}>
-      {episodes.length > 0 && !showList && (
-        <CustomAudioPlayer
-          episode={episodes[currentIndex]}
-          skipToNextEpisode={skipToNextEpisode}
-          skipToPrevEpisode={skipToPrevEpisode}
-        />
+      {isLoading ? (
+        <div className={classes.spinnerWrapper}>
+          <div className={classes.spinner}></div>
+        </div>
+      ) : (
+        <>
+          {!showList && episodes.length > 0 && (
+            <CustomAudioPlayer
+              episode={episodes[currentIndex]}
+              skipToNextEpisode={skipToNextEpisode}
+              skipToPrevEpisode={skipToPrevEpisode}
+            />
+          )}
+          {showList && <EpisodeList episodes={episodes} />}
+        </>
       )}
-      {showList && <EpisodeList episodes={episodes} />}
     </div>
   );
 };
