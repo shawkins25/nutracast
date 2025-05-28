@@ -1,11 +1,12 @@
 import CustomAudioPlayer from "./customAudioPlayer";
+import EpisodeList from "./episodeList"; // new
 import { useEffect, useState } from "react";
 import classes from "./page.module.css";
 
 const PODCAST_FEED_URL =
   "https://api.rss2json.com/v1/api.json?rss_url=https://feed.podbean.com/nutracast/feed.xml";
 
-const PodcastPlayer = () => {
+const PodcastPlayer = ({ showList = false }) => {
   const [episodes, setEpisodes] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -25,22 +26,22 @@ const PodcastPlayer = () => {
   const skipToNextEpisode = () => {
     setCurrentIndex((prev) => (prev + 1) % episodes.length);
   };
+  
   const skipToPrevEpisode = () => {
     setCurrentIndex((prev) => (prev - 1 + episodes.length) % episodes.length);
   };
 
   return (
     <div className={classes.episodesWrapper}>
-      {episodes.map((episode) => (
+      {episodes.length > 0 && !showList && (
         <CustomAudioPlayer
-          key={episode.guid}
           episode={episodes[currentIndex]}
           skipToNextEpisode={skipToNextEpisode}
           skipToPrevEpisode={skipToPrevEpisode}
         />
-      ))}
+      )}
+      {showList && <EpisodeList episodes={episodes} />}
     </div>
   );
 };
-
 export default PodcastPlayer;

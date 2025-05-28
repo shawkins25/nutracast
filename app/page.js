@@ -1,8 +1,8 @@
 "use client";
 
 import JoinDiscussion from "./joinDiscussion";
-import classes from "./page.module.css";
 import PodcastPlayer from "./podcastPlayer";
+import classes from "./page.module.css";
 
 export default function Home() {
   return (
@@ -22,7 +22,8 @@ export default function Home() {
             <PodcastPlayer />
           </div>
           <div className={classes.section}>
-            
+            {/* Episode List Here */}
+            <PodcastPlayer showList />
           </div>
         </div>
         <div className={classes.socials_container}>
