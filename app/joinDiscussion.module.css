@@ -43,5 +43,5 @@
 }
 
 .form button:hover {
-  background-color: #065b32;
+  background-color: var(--hover);
 }

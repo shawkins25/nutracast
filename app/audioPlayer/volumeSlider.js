@@ -1,0 +1,19 @@
+import classes from "../page.module.css";
+
+const VolumeSlider = ({ volume, onVolumeChange, volumeSliderRef }) => {
+  return (
+    <div className={classes.volumeWrapper}>
+      <input
+        type="range"
+        min="0"
+        max="1"
+        step="0.01"
+        value={volume}
+        onChange={(e) => onVolumeChange(parseFloat(e.target.value))}
+        ref={volumeSliderRef}
+        className={classes.volumeSlider}
+      />
+    </div>
+  );
+};
+export default VolumeSlider;
