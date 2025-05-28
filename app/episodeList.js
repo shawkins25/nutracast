@@ -9,7 +9,6 @@ const EpisodeList = ({ episodes }) => {
             <a href={episode.link} target="_blank" rel="noopener noreferrer">
               {episode.title}
             </a>
-            {/* <p>{new Date(episode.pubDate).toLocaleDateString()}</p> */}
           </li>
         ))}
       </ul>

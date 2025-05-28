@@ -3,6 +3,8 @@
 import JoinDiscussion from "./joinDiscussion";
 import PodcastPlayer from "./podcastPlayer";
 import classes from "./page.module.css";
+import logo from "./assets/NC_Logo.webp"
+
 
 export default function Home() {
   return (
@@ -10,7 +12,7 @@ export default function Home() {
       <div className={classes.container}>
         <div className={classes.logo}></div>
         <div className={classes.header}>
-          <img src="#" />
+          <img src= {logo}/>
           <h1>NUTRACAST</h1>
           <p>MINISTERING | EQUIPPING | INSTRUCTING</p>
         </div>

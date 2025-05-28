@@ -10,6 +10,8 @@ const PodcastPlayer = ({ showList = false }) => {
   const [episodes, setEpisodes] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
 
+  console.log("Episode List: ", episodes);
+
   useEffect(() => {
     const fetchEpisodes = async () => {
       try {
@@ -26,7 +28,7 @@ const PodcastPlayer = ({ showList = false }) => {
   const skipToNextEpisode = () => {
     setCurrentIndex((prev) => (prev + 1) % episodes.length);
   };
-  
+
   const skipToPrevEpisode = () => {
     setCurrentIndex((prev) => (prev - 1 + episodes.length) % episodes.length);
   };
