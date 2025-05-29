@@ -1,9 +1,8 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, useMemo, memo, useCallback } from "react";
 import classes from "../page.module.css";
 import ProgressDisplay from "./progressDisplay";
 import PlayerControls from "./playerControls";
 import VolumeSlider from "./volumeSlider";
-import { useCallback, useMemo } from 'react';
 import debounce from 'lodash/debounce';
 
 const CustomAudioPlayer = ({
@@ -68,12 +67,12 @@ const audioSrc = useMemo(() => episode.enclosure?.[0]?.$?.url ?? "", [episode]);
     }
   }, [volume]);
 
-  const handleSeek = (value) => {
+  const handleSeek = useCallback((value) => {
     if (audioRef.current) {
       audioRef.current.currentTime = value;
       setCurrentTime(value);
     }
-  };
+  }, []);
 
   const handleVolume = useCallback(
     debounce((e) => {
@@ -84,12 +83,12 @@ const audioSrc = useMemo(() => episode.enclosure?.[0]?.$?.url ?? "", [episode]);
     []
   );
 
-  const handleSpeedChange = () => {
+  const handleSpeedChange = useCallback(() => {
     const rates = [1, 1.5, 2, 0.75];
     const next = rates[(rates.indexOf(playbackRate) + 1) % rates.length];
     setPlaybackRate(next);
     if (audioRef.current) audioRef.current.playbackRate = next;
-  };
+  }, [playbackRate]);
 
   return (
     <div className={classes.episode}>
@@ -139,4 +138,4 @@ const audioSrc = useMemo(() => episode.enclosure?.[0]?.$?.url ?? "", [episode]);
     </div>
   );
 };
-export default CustomAudioPlayer;
+export default memo(CustomAudioPlayer);

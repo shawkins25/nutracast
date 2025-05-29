@@ -1,6 +1,12 @@
-import CustomAudioPlayer from "./audioPlayer/customAudioPlayer";
-import EpisodeList from "./episodeList";
 import classes from "./page.module.css";
+import dynamic from "next/dynamic";
+import { memo } from 'react';
+
+const CustomAudioPlayer = dynamic(
+  () => import("./audioPlayer/customAudioPlayer"),
+  { ssr: true }
+);
+const EpisodeList = dynamic(() => import("./episodeList"), { ssr: true });
 
 const PodcastPlayer = ({
   type = "player",
@@ -9,7 +15,7 @@ const PodcastPlayer = ({
   skipToNextEpisode,
   skipToPrevEpisode,
   onSelectEpisode,
-  audioRef
+  audioRef,
 }) => {
   if (type === "player") {
     return (
@@ -36,4 +42,5 @@ const PodcastPlayer = ({
   }
   return null;
 };
-export default PodcastPlayer;
+
+export default memo(PodcastPlayer);

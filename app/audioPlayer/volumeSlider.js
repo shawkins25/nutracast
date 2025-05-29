@@ -1,4 +1,5 @@
 import classes from "../page.module.css";
+import { memo } from "react";
 
 const VolumeSlider = ({ volume, onVolumeChange, volumeSliderRef }) => {
   return (
@@ -16,4 +17,4 @@ const VolumeSlider = ({ volume, onVolumeChange, volumeSliderRef }) => {
     </div>
   );
 };
-export default VolumeSlider;
+export default memo(VolumeSlider);

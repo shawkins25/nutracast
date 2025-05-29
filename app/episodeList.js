@@ -1,6 +1,7 @@
 import { FaPlus } from "react-icons/fa";
 import { BsSoundwave } from "react-icons/bs";
 import classes from "./episodeList.module.css";
+import { memo } from 'react';
 
 const EpisodeList = ({
   episode: currentEpisode,
@@ -36,4 +37,4 @@ const EpisodeList = ({
   );
 };
 
-export default EpisodeList;
+export default memo(EpisodeList);

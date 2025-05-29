@@ -1,12 +1,14 @@
 "use client";
 
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, useCallback } from "react";
 import { parseStringPromise } from "xml2js";
-import JoinDiscussion from "./joinDiscussion";
-import PodcastPlayer from "./podcastPlayer";
 import classes from "./page.module.css";
 import logo from "./assets/NC_Logo.webp";
 import Image from "next/image";
+import dynamic from "next/dynamic";
+
+const JoinDiscussion = dynamic(() => import("./joinDiscussion"), { ssr: false });
+const PodcastPlayer = dynamic(() => import("./podcastPlayer"), { ssr: false });
 
 const RSS_FEED_URL = "https://feed.podbean.com/nutracast/feed.xml";
 
@@ -33,7 +35,7 @@ export default function Home() {
     fetchFeed();
   }, []);
 
-  const skipToNextEpisode = (mode = "next") => {
+  const skipToNextEpisode = useCallback((mode = "next") => {
     setCurrentIndex((prev) => {
       if (mode === "shuffle") {
         let newIndex;
@@ -44,16 +46,16 @@ export default function Home() {
       }
       return (prev + 1) % episodes.length;
     });
-  };
+  }, [episodes]);
 
-  const skipToPrevEpisode = () => {
+  const skipToPrevEpisode = useCallback(() => {
     const audio = audioRef.current;
     if (audio && audio.currentTime > 3.5) {
       audio.currentTime = 0;
     } else {
       setCurrentIndex((prev) => (prev - 1 + episodes.length) % episodes.length);
     }
-  };
+  }, [audioRef]);
 
   return (
     <div className={classes.page}>
@@ -66,11 +68,12 @@ export default function Home() {
           <p>MINISTERING | EQUIPPING | INSTRUCTING</p>
         </div>
         <div className={classes.section_container}>
-          <div className={classes.section}>
+          {/* Join Discussion - will be left on desktop, bottom on mobile */}
+          <div className={`${classes.section} ${classes.joinDiscussion}`}>
             <JoinDiscussion />
           </div>
-          {/* ✅ Section 2: Only audio player */}
-          <div className={classes.section}>
+          {/* Audio Player */}
+          <div className={`${classes.section} ${classes.audioPlayer}`}>
             {isLoading ? (
               <div className={classes.spinnerWrapper}>
                 <div className={classes.spinner}></div>
@@ -87,8 +90,8 @@ export default function Home() {
               )
             )}
           </div>
-          {/* ✅ Section 3: Just the list */}
-          <div className={classes.section}>
+          {/* Episode List */}
+          <div className={`${classes.section} ${classes.episodesList}`}>
             {isLoading ? (
               <div className={classes.spinnerWrapper}>
                 <div className={classes.spinner}></div>

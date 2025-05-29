@@ -1,4 +1,5 @@
 import classes from "../page.module.css";
+import { memo } from "react";
 
 const ProgressDisplay = ({ currentTime, duration, onSeek }) => {
   const formatTime = (time) => {
@@ -27,4 +28,4 @@ const ProgressDisplay = ({ currentTime, duration, onSeek }) => {
     </div>
   );
 };
-export default ProgressDisplay;
+export default memo(ProgressDisplay);

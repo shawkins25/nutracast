@@ -1,6 +1,7 @@
 import { FaHeart, FaDownload } from "react-icons/fa";
 import { FaShuffle } from "react-icons/fa6";
 import { LuRepeat, LuRepeat1 } from "react-icons/lu";
+import { memo } from "react";
 import {
   MdPlayArrow,
   MdPause,
@@ -89,4 +90,4 @@ const PlayerControls = ({
     </div>
   );
 };
-export default PlayerControls;
+export default memo(PlayerControls);
