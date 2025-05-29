@@ -9,6 +9,7 @@ const PodcastPlayer = ({
   skipToNextEpisode,
   skipToPrevEpisode,
   onSelectEpisode,
+  audioRef
 }) => {
   if (type === "player") {
     return (
@@ -17,6 +18,7 @@ const PodcastPlayer = ({
           episode={episode}
           skipToNextEpisode={skipToNextEpisode}
           skipToPrevEpisode={skipToPrevEpisode}
+          audioRef={audioRef}
         />
       </div>
     );
@@ -24,7 +26,11 @@ const PodcastPlayer = ({
   if (type === "list") {
     return (
       <div className={classes.episodesWrapper}>
-        <EpisodeList episodes={episodes} onSelectEpisode={onSelectEpisode} />
+        <EpisodeList
+          episode={episode}
+          episodes={episodes}
+          onSelectEpisode={onSelectEpisode}
+        />
       </div>
     );
   }

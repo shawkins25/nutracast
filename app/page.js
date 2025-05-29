@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { parseStringPromise } from "xml2js";
 import JoinDiscussion from "./joinDiscussion";
 import PodcastPlayer from "./podcastPlayer";
@@ -14,6 +14,7 @@ export default function Home() {
   const [episodes, setEpisodes] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
+  const audioRef = useRef(null);
 
   useEffect(() => {
     const fetchFeed = async () => {
@@ -46,7 +47,12 @@ export default function Home() {
   };
 
   const skipToPrevEpisode = () => {
-    setCurrentIndex((prev) => (prev - 1 + episodes.length) % episodes.length);
+    const audio = audioRef.current;
+    if (audio && audio.currentTime > 3.5) {
+      audio.currentTime = 0;
+    } else {
+      setCurrentIndex((prev) => (prev - 1 + episodes.length) % episodes.length);
+    }
   };
 
   return (
@@ -76,6 +82,7 @@ export default function Home() {
                   episode={episodes[currentIndex]}
                   skipToNextEpisode={skipToNextEpisode}
                   skipToPrevEpisode={skipToPrevEpisode}
+                  audioRef={audioRef}
                 />
               )
             )}
@@ -91,6 +98,7 @@ export default function Home() {
                 <PodcastPlayer
                   type="list"
                   episodes={episodes}
+                  episode={episodes[currentIndex]}
                   onSelectEpisode={(index) => setCurrentIndex(index)}
                 />
               )

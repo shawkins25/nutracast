@@ -10,8 +10,9 @@ const CustomAudioPlayer = ({
   episode,
   skipToNextEpisode,
   skipToPrevEpisode,
+  audioRef
 }) => {
-  const audioRef = useRef(null);
+
   const volumeSliderRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [playbackRate, setPlaybackRate] = useState(1);
@@ -21,6 +22,7 @@ const CustomAudioPlayer = ({
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
   const [volume, setVolume] = useState(0.75);
+
   const title = useMemo(() => episode.title?.[0] ?? "", [episode]);
 const description = useMemo(() => (episode.description?.[0] ?? "").replace(/<\/?p>/g, ""), [episode]);
 const audioSrc = useMemo(() => episode.enclosure?.[0]?.$?.url ?? "", [episode]);

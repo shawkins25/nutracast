@@ -28,7 +28,7 @@
   color: #1c1c1c;
 }
 .episodeItem:hover {
-  color: var(--primary);
+  color: var(--hover);
 }
 
 .episodeList ul li {
@@ -37,7 +37,7 @@
 }
 
 .episodeList ul li:hover {
-  color: var(--primary);
+  color: var(--hover);
 }
 
 /* .episodeList ul li a {
@@ -46,7 +46,40 @@
     align-items: center;
 } */
 
-.icon {
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.15);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.icon,
+.soundwave_icon {
+  font-size: 18px;
   margin: 0 5px 0px 0;
   color: var(--primary);
+}
+
+.soundwave_icon {
+  animation: pulse 1.5s infinite;
+}
+
+/* .nowPlayingLabel {
+ font-size: 0.8rem;
+ color: #0a7500;
+ margin-left: auto;
+ font-style: italic;
+} */
+
+.activeEpisode {
+  color: var(--hover);
+  font-weight: bold;
 }
