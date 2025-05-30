@@ -6,8 +6,12 @@ import classes from "./page.module.css";
 import logo from "./assets/NC_Logo.webp";
 import Image from "next/image";
 import dynamic from "next/dynamic";
+import Link from "next/link";
+import WaveRods from "./waveRods";
 
-const JoinDiscussion = dynamic(() => import("./joinDiscussion"), { ssr: false });
+const JoinDiscussion = dynamic(() => import("./joinDiscussion"), {
+  ssr: false,
+});
 const PodcastPlayer = dynamic(() => import("./podcastPlayer"), { ssr: false });
 
 const RSS_FEED_URL = "https://feed.podbean.com/nutracast/feed.xml";
@@ -35,18 +39,21 @@ export default function Home() {
     fetchFeed();
   }, []);
 
-  const skipToNextEpisode = useCallback((mode = "next") => {
-    setCurrentIndex((prev) => {
-      if (mode === "shuffle") {
-        let newIndex;
-        do {
-          newIndex = Math.floor(Math.random() * episodes.length);
-        } while (newIndex === prev && episodes.length > 1);
-        return newIndex;
-      }
-      return (prev + 1) % episodes.length;
-    });
-  }, [episodes]);
+  const skipToNextEpisode = useCallback(
+    (mode = "next") => {
+      setCurrentIndex((prev) => {
+        if (mode === "shuffle") {
+          let newIndex;
+          do {
+            newIndex = Math.floor(Math.random() * episodes.length);
+          } while (newIndex === prev && episodes.length > 1);
+          return newIndex;
+        }
+        return (prev + 1) % episodes.length;
+      });
+    },
+    [episodes]
+  );
 
   const skipToPrevEpisode = useCallback(() => {
     const audio = audioRef.current;
@@ -62,9 +69,11 @@ export default function Home() {
       <div className={classes.container}>
         <div className={classes.logo}></div>
         <div className={classes.header}>
-          <div className={classes.logo_container}>
-            <Image src={logo} alt={"Logo"} fill priority />
-          </div>
+          <Link href="https://www.nutramaxlabs.com/" target="_blank">
+            <div className={classes.logo_container}>
+              <Image src={logo} alt={"Logo"} fill priority />
+            </div>
+          </Link>
           <p>MINISTERING | EQUIPPING | INSTRUCTING</p>
         </div>
         <div className={classes.section_container}>
@@ -120,6 +129,7 @@ export default function Home() {
           </a>
         </div>
       </div>
+      <WaveRods />
     </div>
   );
 }
