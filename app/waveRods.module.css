@@ -26,8 +26,9 @@
  .rod {
    width: 12px;
    animation: wave 3s infinite ease-in-out;
+   transform: scaleY(0.8); /* Match initial keyframe */
+   animation-fill-mode: both;
  }
-
  @keyframes wave {
    0%, 100% {
      transform: scaleY(0.8);
