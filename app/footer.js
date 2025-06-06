@@ -57,33 +57,33 @@ export default function Footer() {
                     href="https://www.facebook.com/NutramaxLabs"
                     target="_blank"
                     className={classes["footer-social-icon"]}
-                    aria-label="Nutramax Labs Facebook account"
+                    aria-label="Nutramax Labs Facebook"
                   >
-                    &#62366;
+                    <i className="fa fa-facebook" />
                   </Link>
                   <Link
                     href="https://www.youtube.com/NutramaxLabs"
                     target="_blank"
                     className={classes["footer-social-icon"]}
-                    aria-label="Nutramax Labs YouTube account"
+                    aria-label="Nutramax Labs YouTube"
                   >
-                    &#61799;
+                    <i className="fa fa-youtube" />
                   </Link>
                   <Link
                     href="https://www.linkedin.com/company/nutramax-laboratories-inc."
                     target="_blank"
                     className={classes["footer-social-icon"]}
-                    aria-label="Nutramax Labs LinkedIn account"
+                    aria-label="Nutramax Labs LinkedIn"
                   >
-                    &#61665;
+                    <i className="fa fa-linkedin" />
                   </Link>
                   <Link
                     href="https://www.instagram.com/nutramax_labs/"
                     target="_blank"
-                    className={`${classes["footer-social-icon"]} ${classes["last"]}`}
-                    aria-label="Nutramax Labs Instagram account"
+                    className={classes["footer-social-icon"]}
+                    aria-label="Nutramax Labs Instagram"
                   >
-                    &#61805;
+                    <i className="fa fa-instagram" />
                   </Link>
                 </div>
               </div>
@@ -95,7 +95,7 @@ export default function Footer() {
                   <ul role="list" className={classes["footer-bullet-list"]}>
                     <li className={classes["list-item-footerbullet"]}>
                       <Link
-                        href="/our-products/products-for-people"
+                        href="https://www.nutramaxlabs.com/our-products/products-for-people"
                         className={`${classes["paragraph"]} ${classes["footer-link"]}`}
                       >
                         Products for You
@@ -103,7 +103,7 @@ export default function Footer() {
                     </li>
                     <li className={classes["list-item-footerbullet"]}>
                       <Link
-                        href="/our-products/products-for-your-dog-cat-horse"
+                        href="https://www.nutramaxlabs.com/our-products/products-for-your-dog-cat-horse"
                         className={`${classes["paragraph"]} ${classes["footer-link"]}`}
                       >
                         Products for Your Pets
@@ -111,7 +111,7 @@ export default function Footer() {
                     </li>
                     <li className={classes["list-item-footerbullet"]}>
                       <Link
-                        href="/our-story"
+                        href="https://www.nutramaxlabs.com/our-story/"
                         className={`${classes["paragraph"]} ${classes["footer-link"]}`}
                       >
                         Our Story
@@ -119,7 +119,7 @@ export default function Footer() {
                     </li>
                     <li className={classes["list-item-footerbullet"]}>
                       <Link
-                        href="/our-passion"
+                        href="https://www.nutramaxlabs.com/our-passion"
                         className={`${classes["paragraph"]} ${classes["footer-link"]}`}
                       >
                         Our Passion
@@ -127,7 +127,7 @@ export default function Footer() {
                     </li>
                     <li className={classes["list-item-footerbullet"]}>
                       <Link
-                        href="/our-quality"
+                        href="https://www.nutramaxlabs.com/our-quality"
                         className={`${classes["paragraph"]} ${classes["footer-link"]}`}
                       >
                         Our Quality
@@ -135,7 +135,7 @@ export default function Footer() {
                     </li>
                     <li className={classes["list-item-footerbullet"]}>
                       <Link
-                        href="/join-our-family"
+                        href="https://www.nutramaxlabs.com/join-our-family"
                         className={`${classes["paragraph"]} ${classes["footer-link"]}`}
                       >
                         Join Our Family
@@ -153,7 +153,7 @@ export default function Footer() {
                     </li>
                     <li className={classes["list-item-footerbullet"]}>
                       <Link
-                        href="/login"
+                        href="https://www.mynutramax.com/login/?"
                         className={`${classes["paragraph"]} ${classes["footer-link"]}`}
                       >
                         Vet &amp; Medical Portal
@@ -170,7 +170,7 @@ export default function Footer() {
                     </li>
                     <li className={classes["list-item-footerbullet"]}>
                       <Link
-                        href="/policies/terms-of-use"
+                        href="https://www.nutramaxlabs.com/policies/terms-of-use"
                         className={`${classes["paragraph"]} ${classes["footer-link"]}`}
                       >
                         Policies
@@ -197,7 +197,7 @@ export default function Footer() {
                         concerns and/or feedback.
                       </div>
                       <Link
-                        href="/contact"
+                        href="https://www.nutramaxlabs.com/contact"
                         className={`${classes["button"]} ${classes["footer-button-border"]} w-button`}
                       >
                         Contact Us
@@ -221,7 +221,7 @@ export default function Footer() {
                         Catch up on Nutramax related news.
                       </div>
                       <Link
-                        href="/media-center"
+                        href="https://www.nutramaxlabs.com/media-center"
                         className={`${classes["button"]} ${classes["footer-button-border"]} w-button`}
                       >
                         View Latest News
@@ -231,80 +231,7 @@ export default function Footer() {
                 </div>
               </div>
             </div>
-            <div
-              className={`${classes["footer-column"]} ${classes["subscribe"]} ${classes["hide"]}`}
-            >
-              <div
-                className={`${classes["footer-column-heading"]} ${classes["subscribe"]}`}
-              >
-                <div className={classes["footer-heading6"]}>Subscribe</div>
-                <div className={classes["footercolumn"]}>
-                  <div
-                    className={`${classes["paragraph"]} ${classes["text-white"]} ${classes["small"]}`}
-                  >
-                    Sign up to receive news and special offers from Nutramax
-                    Laboratories Consumer Care, Inc.
-                  </div>
-                  <div className={`${classes["form-block"]} w-form`}>
-                    <form
-                      id="email-form-2"
-                      name="email-form-2"
-                      data-name="Email Form 2"
-                      className={classes["form"]}
-                    >
-                      <input
-                        type="submit"
-                        value="Join Now"
-                        data-wait="Please wait..."
-                        className={`${classes["button"]} ${classes["footer-subscribe"]} w-button`}
-                      />
-                      <input
-                        type="text"
-                        className={`${classes["footer-subscribe-field"]} w-input`}
-                        maxLength="256"
-                        name="Subscribe-Email-2"
-                        data-name="Subscribe Email 2"
-                        placeholder="Your E-Mail"
-                        id="Subscribe-Email-2"
-                      />
-                      <label
-                        className={`${classes["w-checkbox"]} ${classes["checkbox-field"]}`}
-                      >
-                        <input
-                          type="checkbox"
-                          id="checkbox-2"
-                          name="checkbox-2"
-                          data-name="Checkbox 2"
-                          className={`${classes["w-checkbox-input"]} ${classes["checkbox"]}`}
-                        />
-                        <span
-                          className={`${classes["footer-subscribe-legalcopy"]} ${classes["w-form-label"]}`}
-                        >
-                          Yes, I wish to receive electronic promotions, special
-                          offers and new product information from Nutramax
-                          Laboratories Consumer Care, Inc. (&quot;Nutramax&quot;). I understand I can unsubscribe at any time. Emails and
-                          other marketing communications from Nutramax,
-                          including offers or promotions contained therein, are
-                          intended for and available to United States residents
-                          only. By clicking &quot;Join Now&quot;, I certify that I am a
-                          resident of the United States and at least 18 years of
-                          age.
-                        </span>
-                      </label>
-                    </form>
-                    <div className="w-form-done">
-                      <div>Thank you! Your submission has been received!</div>
-                    </div>
-                    <div className="w-form-fail">
-                      <div>
-                        Oops! Something went wrong while submitting the form.
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>{" "}
+          </div>
           {/* End of .footer-main-container */}
         </div>
         {/* End of .footer.breadcrumbs */}
@@ -330,19 +257,19 @@ export default function Footer() {
             </div>
             <div className={`${classes["btmbar-content"]} ${classes["right"]}`}>
               <Link
-                href="/policies/privacy-policy"
+                href="https://www.nutramaxlabs.com/policies/privacy-policy"
                 className={classes["footer-legal-link"]}
               >
                 Privacy Policy
               </Link>
               <Link
-                href="/policies/terms-of-use"
+                href="https://www.nutramaxlabs.com/policies/terms-of-use"
                 className={classes["footer-legal-link"]}
               >
                 Terms of Use
               </Link>
               <Link
-                href="/policies/privacy-policy#donotsell"
+                href="https://www.nutramaxlabs.com/policies/privacy-policy#donotsell"
                 className={`${classes["footer-legal-link"]} ${classes["end"]}`}
                 target="_blank"
               >
