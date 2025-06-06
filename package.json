@@ -11,7 +11,6 @@
     "output": "export"
   },
   "dependencies": {
-    "@shawkins25/nmx_lib": "^0.7.5",
     "csso": "^5.0.5",
     "lodash": "^4.17.21",
     "next": "15.3.2",
