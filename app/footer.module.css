@@ -1,19 +1,22 @@
-  .footer_silhouette_container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 200px;
-    height: 200px;
-    z-index: 0;
-    color: red;
-    pointer-events: none; /* Prevents interaction */
-  }
+.footer_silhouette_container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200px;
+  height: 200px;
+  z-index: 0;
+  color: red;
+  pointer-events: none; /* Prevents interaction */
+}
 
-  .footer_silhouette_container img {
-    position: relative;
-    color: red;
-  }
+.footer_silhouette_container img {
+  position: relative;
+  color: red;
+}
 
+.footerRow {
+  display: flex;
+}
 
 @media screen and (max-width: 991px) {
   .dropdown-frame.dropdown-spacing.dropdown-bottom,

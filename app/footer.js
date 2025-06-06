@@ -52,7 +52,7 @@ export default function Footer() {
                 >
                   Connect with us
                 </div>
-                <div className={classes["footerrow"]}>
+                <div className={classes.footerRow}>
                   <Link
                     href="https://www.facebook.com/NutramaxLabs"
                     target="_blank"

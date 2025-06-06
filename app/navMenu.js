@@ -1,9 +1,28 @@
+import { useState } from "react";
 import classes from "./navMenu.module.css";
+import Link from "next/link";
 
 const NavMenu = () => {
+  const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
+
   return (
     <nav className={classes.nav}>
-      <ul className={classes.navList}>
+      {/* Hamburger Button */}
+      <button
+        className={classes.hamburger}
+        onClick={() => setMobileMenuOpen(!isMobileMenuOpen)}
+        aria-label="Toggle menu"
+      >
+        <span className={classes.bar}></span>
+        <span className={classes.bar}></span>
+        <span className={classes.bar}></span>
+      </button>
+      {/* Main Navigation */}
+      <ul
+        className={`${classes.navList} ${
+          isMobileMenuOpen ? classes.navListMobileOpen : ""
+        }`}
+      >
         {/* OUR PRODUCTS */}
         <li className={classes.navItem}>
           <div className={classes.dropdownWrapper}>
@@ -16,10 +35,10 @@ const NavMenu = () => {
                 <div className={classes.dropdownArrow} />
               </div>
               <div className={classes.realDropDownList}>
-                <a href="/our-products/products-for-your-dog-cat-horse">
+                <Link href="/our-products/products-for-your-dog-cat-horse">
                   Products for Your Pet
-                </a>
-                <a href="/our-products/products-for-people">Products for You</a>
+                </Link>
+                <Link href="/our-products/products-for-people">Products for You</Link>
               </div>
             </div>
           </div>
@@ -27,9 +46,9 @@ const NavMenu = () => {
         <div className={classes.divider} />
         {/* OUR STORY */}
         <li className={classes.navItem}>
-          <a href="/our-story" className={classes.navLink}>
+          <Link href="/our-story" className={classes.navLink}>
             <span className={classes.subText}>Our </span>Story
-          </a>
+          </Link>
         </li>
         {/* OUR PASSION */}
         <li className={`${classes.navItem} ${classes.hasDropdown}`}>
@@ -43,25 +62,27 @@ const NavMenu = () => {
                 <div className={classes.dropdownArrow} />
               </div>
               <div className={classes.realDropDownList}>
-                <a href="/our-passion#at-home">At Home</a>
-                <a href="/our-passion#across-the-nation">Across the Nation</a>
-                <a href="/our-passion#across-the-world">Across the World</a>
-                <a href="/nutramax-supports/service-dogs">Supporting Service Dogs</a>
+                <Link href="/our-passion#at-home">At Home</Link>
+                <Link href="/our-passion#across-the-nation">Across the Nation</Link>
+                <Link href="/our-passion#across-the-world">Across the World</Link>
+                <Link href="/nutramax-supports/service-dogs">
+                  Supporting Service Dogs
+                </Link>
               </div>
             </div>
           </div>
         </li>
         {/* OUR QUALITY */}
         <li className={classes.navItem}>
-          <a href="/our-quality" className={classes.navLink}>
+          <Link href="/our-quality" className={classes.navLink}>
             <span className={classes.subText}>Our </span>Quality
-          </a>
+          </Link>
         </li>
         {/* JOIN OUR FAMILY */}
         <li className={classes.navItem}>
-          <a href="/join-our-family" className={classes.navLink}>
+          <Link href="/join-our-family" className={classes.navLink}>
             <span className={classes.subText}>Join Our </span>Family
-          </a>
+          </Link>
         </li>
       </ul>
     </nav>
