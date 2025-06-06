@@ -27,7 +27,7 @@ export default function Header() {
             >
               International
             </Link>
-            <Link href="/login" className={classes["topbar-navlink"]}>
+            <Link href="https://www.mynutramax.com/dashboard" className={classes["topbar-navlink"]}>
               Vet &amp; Medical Portal
             </Link>
           </div>
@@ -45,50 +45,6 @@ export default function Header() {
                 />
             </Link>
           <div className={classes["navigation"]}>
-            {/* <div className={classes["nav-links-container"]}>
-              <div className={classes.navlinks}>
-                <div
-                  className={`${classes.navMainLink} ${classes.wDropdownToggle}`}
-                >
-                  <div
-                    className={`${classes.dropdownLinkicon} ${classes.desktop}`}
-                  >
-                    <a
-                      className={`${classes.navMainLink} ${classes.navlinkOur}`}
-                    >
-                      <span className={classes["nav-ourspan"]}>Our </span>
-                      Products
-                    </a>
-                    <div
-                      className={`${classes.dropDownIcon} ${classes.wIconDropdownToggle}`}
-                    />
-                  </div>
-                </div>
-                <nav
-                  className={`${classes.dropdownList} ${classes.wDropdownList}`}
-                >
-                  <div className={classes.dropdownTopborder}>
-                    <div className={classes.dropdownArrow} />
-                  </div>
-                  <div className={classes.dropdownrounded}>
-                    <div className={classes.dropdownLink}>
-                      <a
-                        href="/our-products/products-for-your-dog-cat-horse"
-                        className={`${classes.dropdownFrame} ${classes.dropdownSpacing} ${classes.end} ${classes.wDropdownLink}`}
-                      >
-                        Products for Your Pet
-                      </a>
-                      <a
-                        href="/our-products/products-for-people"
-                        className={`${classes.dropdownFrame} ${classes.dropdownSpacing} ${classes.wDropdownLink}`}
-                      >
-                        Products for You
-                      </a>
-                    </div>
-                  </div>
-                </nav>
-              </div>
-            </div> */}
             <NavMenu />
           </div>
         </div>

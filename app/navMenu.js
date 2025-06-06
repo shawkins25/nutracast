@@ -43,9 +43,10 @@ const NavMenu = () => {
                 <div className={classes.dropdownArrow} />
               </div>
               <div className={classes.realDropDownList}>
-                <a href="/our-passion/at-home">At Home</a>
-                <a href="/our-passion/across-the-nation">Across the Nation</a>
-                <a href="/our-passion/across-the-world">Across the World</a>
+                <a href="/our-passion#at-home">At Home</a>
+                <a href="/our-passion#across-the-nation">Across the Nation</a>
+                <a href="/our-passion#across-the-world">Across the World</a>
+                <a href="/nutramax-supports/service-dogs">Supporting Service Dogs</a>
               </div>
             </div>
           </div>
@@ -58,7 +59,7 @@ const NavMenu = () => {
         </li>
         {/* JOIN OUR FAMILY */}
         <li className={classes.navItem}>
-          <a href="/join-us" className={classes.navLink}>
+          <a href="/join-our-family" className={classes.navLink}>
             <span className={classes.subText}>Join Our </span>Family
           </a>
         </li>

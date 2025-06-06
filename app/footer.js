@@ -1,3 +1,4 @@
+import Link from "next/link";
 import classes from "./footer.module.css";
 import Image from "next/image";
 
@@ -26,7 +27,7 @@ export default function Footer() {
         <div className={classes["footer"] + " " + classes["breadcrumbs"]}>
           <div className={classes["footer-main-container"]}>
             <div className={`${classes["footer-column"]} ${classes["center"]}`}>
-              <a
+              <Link
                 href="/"
                 aria-current="page"
                 className={`${classes["f-logo-link"]} w-inline-block w--current`}
@@ -36,7 +37,7 @@ export default function Footer() {
                     srcSet="/nutracast/logo_nutramax-laboratories-w.svg"
                     type="svg"
                   />
-                  <img
+                  <Image
                     width="274"
                     height="79"
                     src="/nutracast/logo_nutramax-laboratories-w.svg"
@@ -44,7 +45,7 @@ export default function Footer() {
                     className={classes["footer-logo"]}
                   />
                 </picture>
-              </a>
+              </Link>
               <div className={classes["footer-social"]}>
                 <div
                   className={`${classes["paragraph"]} ${classes["footer-social-text"]}`}
@@ -52,38 +53,38 @@ export default function Footer() {
                   Connect with us
                 </div>
                 <div className={classes["footerrow"]}>
-                  <a
+                  <Link
                     href="https://www.facebook.com/NutramaxLabs"
                     target="_blank"
                     className={classes["footer-social-icon"]}
                     aria-label="Nutramax Labs Facebook account"
                   >
                     &#62366;
-                  </a>
-                  <a
+                  </Link>
+                  <Link
                     href="https://www.youtube.com/NutramaxLabs"
                     target="_blank"
                     className={classes["footer-social-icon"]}
                     aria-label="Nutramax Labs YouTube account"
                   >
                     &#61799;
-                  </a>
-                  <a
+                  </Link>
+                  <Link
                     href="https://www.linkedin.com/company/nutramax-laboratories-inc."
                     target="_blank"
                     className={classes["footer-social-icon"]}
                     aria-label="Nutramax Labs LinkedIn account"
                   >
                     &#61665;
-                  </a>
-                  <a
+                  </Link>
+                  <Link
                     href="https://www.instagram.com/nutramax_labs/"
                     target="_blank"
                     className={`${classes["footer-social-icon"]} ${classes["last"]}`}
                     aria-label="Nutramax Labs Instagram account"
                   >
                     &#61805;
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -93,87 +94,87 @@ export default function Footer() {
                 <div className={classes["footercolumn"]}>
                   <ul role="list" className={classes["footer-bullet-list"]}>
                     <li className={classes["list-item-footerbullet"]}>
-                      <a
+                      <Link
                         href="/our-products/products-for-people"
                         className={`${classes["paragraph"]} ${classes["footer-link"]}`}
                       >
                         Products for You
-                      </a>
+                      </Link>
                     </li>
                     <li className={classes["list-item-footerbullet"]}>
-                      <a
+                      <Link
                         href="/our-products/products-for-your-dog-cat-horse"
                         className={`${classes["paragraph"]} ${classes["footer-link"]}`}
                       >
                         Products for Your Pets
-                      </a>
+                      </Link>
                     </li>
                     <li className={classes["list-item-footerbullet"]}>
-                      <a
+                      <Link
                         href="/our-story"
                         className={`${classes["paragraph"]} ${classes["footer-link"]}`}
                       >
                         Our Story
-                      </a>
+                      </Link>
                     </li>
                     <li className={classes["list-item-footerbullet"]}>
-                      <a
+                      <Link
                         href="/our-passion"
                         className={`${classes["paragraph"]} ${classes["footer-link"]}`}
                       >
                         Our Passion
-                      </a>
+                      </Link>
                     </li>
                     <li className={classes["list-item-footerbullet"]}>
-                      <a
+                      <Link
                         href="/our-quality"
                         className={`${classes["paragraph"]} ${classes["footer-link"]}`}
                       >
                         Our Quality
-                      </a>
+                      </Link>
                     </li>
                     <li className={classes["list-item-footerbullet"]}>
-                      <a
+                      <Link
                         href="/join-our-family"
                         className={`${classes["paragraph"]} ${classes["footer-link"]}`}
                       >
                         Join Our Family
-                      </a>
+                      </Link>
                     </li>
                     <li
                       className={`${classes["list-item-footerbullet"]} ${classes["hide"]}`}
                     >
-                      <a
+                      <Link
                         href="#"
                         className={`${classes["paragraph"]} ${classes["footer-link"]}`}
                       >
                         Coupons &amp; Rebates
-                      </a>
+                      </Link>
                     </li>
                     <li className={classes["list-item-footerbullet"]}>
-                      <a
+                      <Link
                         href="/login"
                         className={`${classes["paragraph"]} ${classes["footer-link"]}`}
                       >
                         Vet &amp; Medical Portal
-                      </a>
+                      </Link>
                     </li>
                     <li className={classes["list-item-footerbullet"]}>
-                      <a
+                      <Link
                         href="https://www.nutramaxlabs.com/international/"
                         target="_blank"
                         className={`${classes["paragraph"]} ${classes["footer-link"]}`}
                       >
                         International
-                      </a>
+                      </Link>
                     </li>
                     <li className={classes["list-item-footerbullet"]}>
-                      <a
+                      <Link
                         href="/policies/terms-of-use"
                         className={`${classes["paragraph"]} ${classes["footer-link"]}`}
                       >
                         Policies
-                      </a>
+                      </Link>
                     </li>
                   </ul>
                 </div>
@@ -195,12 +196,12 @@ export default function Footer() {
                         We love to hear from you! Send us your questions,
                         concerns and/or feedback.
                       </div>
-                      <a
+                      <Link
                         href="/contact"
                         className={`${classes["button"]} ${classes["footer-button-border"]} w-button`}
                       >
                         Contact Us
-                      </a>
+                      </Link>
                     </div>
                   </div>
                 </div>
@@ -219,12 +220,12 @@ export default function Footer() {
                       >
                         Catch up on Nutramax related news.
                       </div>
-                      <a
+                      <Link
                         href="/media-center"
                         className={`${classes["button"]} ${classes["footer-button-border"]} w-button`}
                       >
                         View Latest News
-                      </a>
+                      </Link>
                     </div>
                   </div>
                 </div>
@@ -281,12 +282,11 @@ export default function Footer() {
                         >
                           Yes, I wish to receive electronic promotions, special
                           offers and new product information from Nutramax
-                          Laboratories Consumer Care, Inc. ("Nutramax"). I
-                          understand I can unsubscribe at any time. Emails and
+                          Laboratories Consumer Care, Inc. (&quot;Nutramax&quot;). I understand I can unsubscribe at any time. Emails and
                           other marketing communications from Nutramax,
                           including offers or promotions contained therein, are
                           intended for and available to United States residents
-                          only. By clicking 'Join Now', I certify that I am a
+                          only. By clicking &quot;Join Now&quot;, I certify that I am a
                           resident of the United States and at least 18 years of
                           age.
                         </span>
@@ -329,33 +329,33 @@ export default function Footer() {
               </div>
             </div>
             <div className={`${classes["btmbar-content"]} ${classes["right"]}`}>
-              <a
+              <Link
                 href="/policies/privacy-policy"
                 className={classes["footer-legal-link"]}
               >
                 Privacy Policy
-              </a>
-              <a
+              </Link>
+              <Link
                 href="/policies/terms-of-use"
                 className={classes["footer-legal-link"]}
               >
                 Terms of Use
-              </a>
-              <a
+              </Link>
+              <Link
                 href="/policies/privacy-policy#donotsell"
                 className={`${classes["footer-legal-link"]} ${classes["end"]}`}
                 target="_blank"
               >
                 Do Not Sell My Personal Information
-              </a>
+              </Link>
             </div>
           </div>
-          <a
+          <Link
             href="#top-of-page"
             className={`${classes["scroll-to-top"]} w-inline-block`}
           >
             <p className={classes["paragraph-4"]}>Scroll to Top</p>
-          </a>
+          </Link>
         </div>
       </div>
       {/* End of .footer-wrapper */}
