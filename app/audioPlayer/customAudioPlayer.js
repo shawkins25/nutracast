@@ -44,7 +44,7 @@ const audioSrc = useMemo(() => episode.enclosure?.[0]?.$?.url ?? "", [episode]);
       audio.removeEventListener("play", handlePlay);
       audio.removeEventListener("pause", handlePause);
     };
-  }, [playbackRate]);
+  }, [playbackRate, audioRef]);
 
   useEffect(() => {
     const audio = audioRef.current;
@@ -58,7 +58,7 @@ const audioSrc = useMemo(() => episode.enclosure?.[0]?.$?.url ?? "", [episode]);
       }
     };
     tryPlay();
-  }, [episode]);
+  }, [episode, audioRef]);
 
   useEffect(() => {
     if (volumeSliderRef.current) {
@@ -72,7 +72,7 @@ const audioSrc = useMemo(() => episode.enclosure?.[0]?.$?.url ?? "", [episode]);
       audioRef.current.currentTime = value;
       setCurrentTime(value);
     }
-  }, []);
+  }, [audioRef]);
 
   const handleVolume = useCallback(
     debounce((e) => {
@@ -80,7 +80,7 @@ const audioSrc = useMemo(() => episode.enclosure?.[0]?.$?.url ?? "", [episode]);
       if (audioRef.current) audioRef.current.volume = newVolume;
       setVolume(newVolume);
     }, 100),
-    []
+    [audioRef]
   );
 
   const handleSpeedChange = useCallback(() => {
@@ -88,7 +88,7 @@ const audioSrc = useMemo(() => episode.enclosure?.[0]?.$?.url ?? "", [episode]);
     const next = rates[(rates.indexOf(playbackRate) + 1) % rates.length];
     setPlaybackRate(next);
     if (audioRef.current) audioRef.current.playbackRate = next;
-  }, [playbackRate]);
+  }, [playbackRate, audioRef]);
 
   return (
     <div className={classes.episode}>
@@ -101,7 +101,7 @@ const audioSrc = useMemo(() => episode.enclosure?.[0]?.$?.url ?? "", [episode]);
         className={classes.speedButton}
         aria-label="Playback Speed"
       >
-        {playbackRate}x
+        {playbackRate}
       </button>
       <ProgressDisplay
         currentTime={currentTime}

@@ -2,7 +2,7 @@ import { Roboto } from "next/font/google";
 import "./globals.css";
 
 const roboto = Roboto({
-  weight: '400',
+  weight: "400",
   subsets: ["latin"],
 });
 
@@ -14,9 +14,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${roboto.variable}`}>
-        {children}
-      </body>
+      <body className={`body ${roboto.variable}`}>{children}</body>
     </html>
   );
 }

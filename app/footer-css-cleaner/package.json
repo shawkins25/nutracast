@@ -1,0 +1,17 @@
+{
+  "name": "css-cleaner",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "fs": "^0.0.1-security",
+    "postcss": "^8.5.4",
+    "postcss-selector-parser": "^7.1.0"
+  }
+}

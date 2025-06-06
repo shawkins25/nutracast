@@ -1,13 +1,15 @@
 "use client";
 
 import { useEffect, useState, useRef, useCallback } from "react";
+import Image from "next/image";
+import Link from "next/link";
 import { parseStringPromise } from "xml2js";
 import classes from "./page.module.css";
-import logo from "./assets/NC_Logo.webp";
-import Image from "next/image";
 import dynamic from "next/dynamic";
-import Link from "next/link";
 import WaveRods from "./waveRods";
+// import { NutramaxHeader, Footer } from "@shawkins25/nmx_lib";
+import Footer from "./footer";
+import Header from "./header";
 
 const JoinDiscussion = dynamic(() => import("./joinDiscussion"), {
   ssr: false,
@@ -62,16 +64,23 @@ export default function Home() {
     } else {
       setCurrentIndex((prev) => (prev - 1 + episodes.length) % episodes.length);
     }
-  }, [audioRef]);
+  }, [audioRef, episodes.length]);
 
   return (
     <div className={classes.page}>
+      {/* <NutramaxHeader logo={<Image src={'https://d2rzipzd14rerj.cloudfront.net/img/NC_Logo.webp'} alt={"Logo"} width="100" height="50" priority />}/> */}
+      <Header />
       <div className={classes.container}>
         <div className={classes.logo}></div>
         <div className={classes.header}>
           <Link href="https://www.nutramaxlabs.com/" target="_blank">
             <div className={classes.logo_container}>
-              <Image src={logo} alt={"Logo"} fill priority />
+              <Image
+                src={"https://d2rzipzd14rerj.cloudfront.net/img/NC_Logo.webp"}
+                alt={"Logo"}
+                fill
+                priority
+              />
             </div>
           </Link>
           <p>MINISTERING | EQUIPPING | INSTRUCTING</p>
@@ -118,18 +127,19 @@ export default function Home() {
           </div>
         </div>
         <div className={classes.socials_container}>
-          <a href="#">
-            <img src="#" />
-          </a>
-          <a href="#">
-            <img src="#" />
-          </a>
-          <a href="#">
-            <img src="#" />
-          </a>
+          {/* <Link href="#">
+            <Image src="" alt="" />
+          </Link>
+          <Link href="#">
+            <Image src="" alt="" />
+          </Link>
+          <Link href="#">
+            <Image src="" alt="" />
+          </Link> */}
         </div>
       </div>
       <WaveRods />
+      <Footer />
     </div>
   );
 }

@@ -7,9 +7,12 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "output": "export"
   },
   "dependencies": {
+    "@shawkins25/nmx_lib": "^0.7.5",
+    "csso": "^5.0.5",
     "lodash": "^4.17.21",
     "next": "15.3.2",
     "node-fetch": "^3.3.2",

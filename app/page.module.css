@@ -15,6 +15,10 @@
   width: 100%;
 }
 
+.container{
+  padding: 5% 0;
+}
+
 .spinnerWrapper {
   display: flex;
   justify-content: center;
@@ -432,11 +436,11 @@
 
 @media (min-width: 1200px) {
 .page {
-  height: 100vh;
+  min-height: 100vh;
 }
 
 .container{
-    height: 100vh;
+    min-height: 100vh;
 }
 
   .section_container {
