@@ -18,8 +18,38 @@
   display: flex;
 }
 
-.footer-social-icon {
+.footercontactus {
+  display: flex;
+  flex-direction: column;
+}
 
+.button {
+  text-transform: uppercase;
+  background-color: transparent;
+  border: 1px solid #fff;
+  color: #fff;
+  font-size: 0.75em;
+  height: 30px;
+  padding: 8px 12px;
+  border-radius: 4px;
+  box-shadow: 0 1px 1px 0 transparent;
+  color: #fff;
+  cursor: pointer;
+  justify-content: center;
+  letter-spacing: 0.5px;
+  text-align: center;
+  z-index: 10;
+  width: fit-content;
+}
+
+.button:hover {
+  background-color: #00a659;
+  border-color: #00a659;
+  color: #fff;
+  text-shadow: none;
+}
+
+.footer-social-icon {
   font-size: 20px;
   width: 40px;
   height: 40px;
@@ -38,12 +68,19 @@
   background-color: #006a38;
   color: white;
 }
- 
-.footer-social-icon.fa-facebook { background: #3b5998; }
-.footer-social-icon.fa-youtube { background: #c4302b; }
-.footer-social-icon.fa-linkedin { background: #0077b5; }
-.footer-social-icon.fa-instagram { background: #e1306c; }
- 
+
+.footer-social-icon.fa-facebook {
+  background: #3b5998;
+}
+.footer-social-icon.fa-youtube {
+  background: #c4302b;
+}
+.footer-social-icon.fa-linkedin {
+  background: #0077b5;
+}
+.footer-social-icon.fa-instagram {
+  background: #e1306c;
+}
 
 @media screen and (max-width: 991px) {
   .dropdown-frame.dropdown-spacing.dropdown-bottom,
