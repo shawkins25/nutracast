@@ -35,10 +35,10 @@ const NavMenu = () => {
                 <div className={classes.dropdownArrow} />
               </div>
               <div className={classes.realDropDownList}>
-                <Link href="/our-products/products-for-your-dog-cat-horse">
+                <Link href="https://www.nutramaxlabs.com/our-products/products-for-your-dog-cat-horse">
                   Products for Your Pet
                 </Link>
-                <Link href="/our-products/products-for-people">Products for You</Link>
+                <Link href="https://www.nutramaxlabs.com/our-products/products-for-people">Products for You</Link>
               </div>
             </div>
           </div>
@@ -46,7 +46,7 @@ const NavMenu = () => {
         <div className={classes.divider} />
         {/* OUR STORY */}
         <li className={classes.navItem}>
-          <Link href="/our-story" className={classes.navLink}>
+          <Link href="https://www.nutramaxlabs.com/our-story/" className={classes.navLink}>
             <span className={classes.subText}>Our </span>Story
           </Link>
         </li>
@@ -62,10 +62,10 @@ const NavMenu = () => {
                 <div className={classes.dropdownArrow} />
               </div>
               <div className={classes.realDropDownList}>
-                <Link href="/our-passion#at-home">At Home</Link>
-                <Link href="/our-passion#across-the-nation">Across the Nation</Link>
-                <Link href="/our-passion#across-the-world">Across the World</Link>
-                <Link href="/nutramax-supports/service-dogs">
+                <Link href="https://www.nutramaxlabs.com/our-passion#at-home">At Home</Link>
+                <Link href="https://www.nutramaxlabs.com/our-passion#across-the-nation">Across the Nation</Link>
+                <Link href="https://www.nutramaxlabs.com/our-passion#around-the-world">Across the World</Link>
+                <Link href="https://www.nutramaxlabs.com/nutramax-supports/service-dogs">
                   Supporting Service Dogs
                 </Link>
               </div>
@@ -74,13 +74,13 @@ const NavMenu = () => {
         </li>
         {/* OUR QUALITY */}
         <li className={classes.navItem}>
-          <Link href="/our-quality" className={classes.navLink}>
+          <Link href="https://www.nutramaxlabs.com/our-quality" className={classes.navLink}>
             <span className={classes.subText}>Our </span>Quality
           </Link>
         </li>
         {/* JOIN OUR FAMILY */}
         <li className={classes.navItem}>
-          <Link href="/join-our-family" className={classes.navLink}>
+          <Link href="https://www.nutramaxlabs.com/join-our-family" className={classes.navLink}>
             <span className={classes.subText}>Join Our </span>Family
           </Link>
         </li>
