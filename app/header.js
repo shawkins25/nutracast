@@ -35,7 +35,7 @@ export default function Header() {
       </div>
       <div className={classes["nav-main"]}>
         <div className={classes["nav-bar-wrapper"]}>
-            <Link href="/" className={classes["navlogowrapper"]}>
+            <Link href="https://www.nutramaxlabs.com/" className={classes["navlogowrapper"]}>
                 <Image
                   fill
                   src={"https://dfblmkp853lqv.cloudfront.net/images/logo_nutramax-laboratories-g.svg"}
