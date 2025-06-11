@@ -12,7 +12,7 @@ const JoinDiscussion = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch("/api/sendQuestion", {
+      const res = await fetch("/nutracast/api/sendQuestion", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
