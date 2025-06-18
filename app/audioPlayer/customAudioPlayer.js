@@ -3,15 +3,14 @@ import classes from "../page.module.css";
 import ProgressDisplay from "./progressDisplay";
 import PlayerControls from "./playerControls";
 import VolumeSlider from "./volumeSlider";
-import debounce from 'lodash/debounce';
+import debounce from "lodash/debounce";
 
 const CustomAudioPlayer = ({
   episode,
   skipToNextEpisode,
   skipToPrevEpisode,
-  audioRef
+  audioRef,
 }) => {
-
   const volumeSliderRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [playbackRate, setPlaybackRate] = useState(1);
@@ -23,8 +22,14 @@ const CustomAudioPlayer = ({
   const [volume, setVolume] = useState(0.75);
 
   const title = useMemo(() => episode.title?.[0] ?? "", [episode]);
-const description = useMemo(() => (episode.description?.[0] ?? "").replace(/<\/?p>/g, ""), [episode]);
-const audioSrc = useMemo(() => episode.enclosure?.[0]?.$?.url ?? "", [episode]);
+  const description = useMemo(
+    () => (episode.description?.[0] ?? "").replace(/<\/?p>/g, ""),
+    [episode]
+  );
+  const audioSrc = useMemo(
+    () => episode.enclosure?.[0]?.$?.url ?? "",
+    [episode]
+  );
 
   useEffect(() => {
     const audio = audioRef.current;
@@ -67,19 +72,22 @@ const audioSrc = useMemo(() => episode.enclosure?.[0]?.$?.url ?? "", [episode]);
     }
   }, [volume]);
 
-  const handleSeek = useCallback((value) => {
-    if (audioRef.current) {
-      audioRef.current.currentTime = value;
-      setCurrentTime(value);
-    }
-  }, [audioRef]);
+  const handleSeek = useCallback(
+    (value) => {
+      if (audioRef.current) {
+        audioRef.current.currentTime = value;
+        setCurrentTime(value);
+      }
+    },
+    [audioRef]
+  );
 
-  const handleVolume = useCallback(
-    debounce((e) => {
-      const newVolume = parseFloat(e.target.value);
-      if (audioRef.current) audioRef.current.volume = newVolume;
-      setVolume(newVolume);
-    }, 100),
+  const handleVolumeChange = useCallback(
+    (e) => {
+      const newVol = parseFloat(e.target.value);
+      setVolume(newVol); // Update the UI
+      if (audioRef.current) audioRef.current.volume = newVol; // Apply to audio
+    },
     [audioRef]
   );
 
@@ -124,7 +132,7 @@ const audioSrc = useMemo(() => episode.enclosure?.[0]?.$?.url ?? "", [episode]);
       />
       <VolumeSlider
         volume={volume}
-        onVolumeChange={handleVolume}
+        onVolumeChange={handleVolumeChange}
         volumeSliderRef={volumeSliderRef}
       />
       <audio

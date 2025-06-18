@@ -37,14 +37,13 @@ const JoinDiscussion = () => {
     <div className={classes.container}>
       <h2 className={classes.heading}>Join the Discussion!</h2>
       <form onSubmit={handleSubmit} className={classes.form}>
-        <label htmlFor="name">Name:</label>
+        <label htmlFor="name">Name (Optional):</label>
         <input
           id="name"
           name="name"
           type="text"
           value={formData.name}
           onChange={handleChange}
-          required
         />
         <label htmlFor="question">Question:</label>
         <textarea

@@ -10,7 +10,7 @@ const VolumeSlider = ({ volume, onVolumeChange, volumeSliderRef }) => {
         max="1"
         step="0.01"
         value={volume}
-        onChange={(e) => onVolumeChange(parseFloat(e.target.value))}
+        onChange={onVolumeChange}
         ref={volumeSliderRef}
         className={classes.volumeSlider}
       />

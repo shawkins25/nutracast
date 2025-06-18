@@ -83,7 +83,7 @@ export default function Home() {
               />
             </div>
           </Link>
-          <p>MINISTERING | EQUIPPING | INSTRUCTING</p>
+          {/* <p>MINISTERING | EQUIPPING | INSTRUCTING</p> */}
         </div>
         <div className={classes.section_container}>
           {/* Join Discussion - will be left on desktop, bottom on mobile */}
