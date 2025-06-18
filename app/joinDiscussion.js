@@ -12,19 +12,23 @@ const JoinDiscussion = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch("/nutracast/api/sendQuestion", {
+      const res = await fetch("/nutracast/send-question.php", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+        },
         body: JSON.stringify(formData),
       });
+      const data = await res.json();
       if (res.ok) {
         alert("Thanks for your question!");
         setFormData({ name: "", question: "" });
       } else {
+        console.error("Email send error:", data);
         alert("Submission failed.");
       }
-    } catch (error) {
-      console.error("Submit error:", error);
+    } catch (err) {
+      console.error("Submit error:", err);
       alert("Error sending your question.");
     }
   };
