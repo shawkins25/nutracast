@@ -45,7 +45,7 @@ const JoinDiscussion = () => {
           value={formData.name}
           onChange={handleChange}
         />
-        <label htmlFor="question">Question:</label>
+        <label htmlFor="question">Questions/Comments:</label>
         <textarea
           id="question"
           name="question"
