@@ -3,7 +3,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $data = json_decode(file_get_contents('php://input'), true);
     $name = htmlspecialchars($data['name']);
     $question = htmlspecialchars($data['question']);
-    $to = "amorgan@nutramaxlabs.com";
+    $to = "shawkins@nutramaxlabs.com";
     $subject = "New Nutracast Question from $name";
     $message = "Name: $name\n\nQuestion:\n$question";
     $headers = "From: form@nutracast.com";
