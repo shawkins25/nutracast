@@ -5,24 +5,6 @@ import Image from "next/image";
 export default function Footer() {
   return (
     <div className={classes["footer-section"]}>
-      {/* <div
-        data-w-id="2038dae6-bf65-9c11-83ea-2e300e097d04"
-        className={classes["footer-lead-in-silhouette"]}
-      >
-        <img
-          src={"/nutracast/footer-silhouette-winter.png"}
-          alt="Silhouette of family outside with dog, cat and horse"
-          data-w-id="2038dae6-bf65-9c11-83ea-2e300e097d05"
-          className={classes["footer-lead-in-silhouette-img"]}
-        />
-      </div>
-      <img
-        src="/nutracast/nmx-divider-pattern-leaf-angled.png"
-        srcSet="/nmx-divider-pattern-leaf-angled-p-500.png 500w, /nmx-divider-pattern-leaf-angled-p-800.png 800w, /nmx-divider-pattern-leaf-angled.png 1920w"
-        sizes="(max-width: 1920px) 100vw, 1920px"
-        alt=""
-        className={classes["footer-lead-in"]}
-      /> */}
       <div className={classes["footer-wrapper"]}>
         <div className={classes["footer"] + " " + classes["breadcrumbs"]}>
           <div className={classes["footer-main-container"]}>
@@ -34,13 +16,13 @@ export default function Footer() {
               >
                 <picture>
                   <source
-                    srcSet="/nutracast/logo_nutramax-laboratories-w.svg"
+                    srcSet="/chaplain-podcast/logo_nutramax-laboratories-w.svg"
                     type="svg"
                   />
                   <Image
                     width="274"
                     height="79"
-                    src="/nutracast/logo_nutramax-laboratories-w.svg"
+                    src="/chaplain-podcast/logo_nutramax-laboratories-w.svg"
                     alt="="
                     className={classes["footer-logo"]}
                   />

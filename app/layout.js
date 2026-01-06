@@ -7,7 +7,7 @@ const roboto = Roboto({
 });
 
 export const metadata = {
-  title: "Nutracast",
+  title: "Nutramax Chaplain Podcast",
   description: "A regular supplement for wisdom and encouragement",
 };
 

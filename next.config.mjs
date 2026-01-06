@@ -4,7 +4,7 @@
 // export default nextConfig;
 
 export default {
-  basePath: "/nutracast",
+  basePath: "/chaplain-podcast",
   output: "export",
   images: {
     unoptimized: true

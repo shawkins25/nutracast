@@ -16,7 +16,7 @@ const JoinDiscussion = dynamic(() => import("./joinDiscussion"), {
 });
 const PodcastPlayer = dynamic(() => import("./podcastPlayer"), { ssr: false });
 
-const RSS_FEED_URL = "https://feed.podbean.com/nutracast/feed.xml";
+const RSS_FEED_URL = "https://feed.podbean.com/NutramaxChaplainPodcast/feed.xml";
 
 export default function Home() {
   const [episodes, setEpisodes] = useState([]);
@@ -68,7 +68,6 @@ export default function Home() {
 
   return (
     <div className={classes.page}>
-      {/* <NutramaxHeader logo={<Image src={'https://d2rzipzd14rerj.cloudfront.net/img/NC_Logo.webp'} alt={"Logo"} width="100" height="50" priority />}/> */}
       <Header />
       <div className={classes.container}>
         <div className={classes.logo}></div>
@@ -76,7 +75,7 @@ export default function Home() {
           <Link href="https://www.nutramaxlabs.com/" target="_blank">
             <div className={classes.logo_container}>
               <Image
-                src={"https://d2rzipzd14rerj.cloudfront.net/img/NC_Logo.webp"}
+                src={"https://d2rzipzd14rerj.cloudfront.net/img/NCP_Logo.webp"}
                 alt={"Logo"}
                 fill
                 priority
