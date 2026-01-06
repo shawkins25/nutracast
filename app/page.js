@@ -75,7 +75,7 @@ export default function Home() {
           <Link href="https://www.nutramaxlabs.com/" target="_blank">
             <div className={classes.logo_container}>
               <Image
-                src={"https://d2rzipzd14rerj.cloudfront.net/img/NCP_Logo.webp"}
+                src={"https://cdn.nutramax.com/imgs/chaplain-podcast/NCP_Logo.webp"}
                 alt={"Logo"}
                 fill
                 priority
