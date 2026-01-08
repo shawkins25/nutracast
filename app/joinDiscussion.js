@@ -1,18 +1,17 @@
 // app/joinDiscussion.js
-
-import { useState, memo } from "react";
+import { useState } from "react";
 import classes from "./joinDiscussion.module.css";
-
 const JoinDiscussion = () => {
   const [formData, setFormData] = useState({ name: "", question: "" });
-
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (isSubmitting) return;
+    setIsSubmitting(true);
     try {
       const res = await fetch("send-question.php", {
         method: "POST",
@@ -21,20 +20,33 @@ const JoinDiscussion = () => {
         },
         body: JSON.stringify(formData),
       });
-      const data = await res.json();
-      if (res.ok) {
-        alert("Thanks for your question!");
-        setFormData({ name: "", question: "" });
-      } else {
-        console.error("Email send error:", data);
-        alert("Submission failed.");
+      // IMPORTANT: don't assume JSON
+      const text = await res.text();
+      let data = null;
+      try {
+        data = JSON.parse(text);
+      } catch {
+        // Non-JSON response (PHP fatal, proxy block, etc.)
+        console.error("Non-JSON response from server:", text);
       }
+      if (!res.ok) {
+        console.error("Email send failed:", data || text);
+        alert(
+          "Sorry — we couldn’t submit your question right now. Please try again later."
+        );
+        return;
+      }
+      alert("Thanks for your question!");
+      setFormData({ name: "", question: "" });
     } catch (err) {
-      console.error("Submit error:", err);
-      alert("Error sending your question.");
+      console.error("Network or fetch error:", err);
+      alert(
+        "There was a network error sending your question. Please try again."
+      );
+    } finally {
+      setIsSubmitting(false);
     }
   };
-
   return (
     <div className={classes.container}>
       <h2 className={classes.heading}>Join the Discussion!</h2>
@@ -56,7 +68,9 @@ const JoinDiscussion = () => {
           onChange={handleChange}
           required
         />
-        <button type="submit">SUBMIT</button>
+        <button type="submit" disabled={isSubmitting}>
+          {isSubmitting ? "SENDING…" : "SUBMIT"}
+        </button>
       </form>
     </div>
   );
