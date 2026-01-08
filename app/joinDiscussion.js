@@ -14,7 +14,7 @@ const JoinDiscussion = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch("/send-question.php", {
+      const res = await fetch("send-question.php", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
