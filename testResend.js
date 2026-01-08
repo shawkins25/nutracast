@@ -1,4 +1,10 @@
-// testResend.js (Node 18+ — no node-fetch)
+// testResend.js (Node 18+)
+import { bootstrap } from "global-agent";
+
+process.env.GLOBAL_AGENT_HTTP_PROXY =
+ process.env.https_proxy || process.env.HTTPS_PROXY || process.env.http_proxy || process.env.HTTP_PROXY;
+bootstrap();
+
 const RESEND_API_KEY = process.env.RESEND_API_KEY;
 
 if (!RESEND_API_KEY) {
@@ -18,7 +24,7 @@ if (!RESEND_API_KEY) {
        from: "Chaplain Podcast Test <chaplain_podcast@nutramaxlabs.com>",
        to: ["shawkins@nutramaxlabs.com"],
        subject: `Resend API Test ${Date.now()}`,
-       text: "If you received this email, Resend is working.",
+       text: "If you received this, Resend works (via proxy).",
      }),
    });
    const text = await res.text();
