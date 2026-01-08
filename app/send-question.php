@@ -1,3 +1,5 @@
+<!-- app/send-question.php -->
+
 <?php
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $log_file = __DIR__ . '/debug_log.txt';
@@ -15,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $to = "amorgan@nutramaxlabs.com";
     $subject = "New Chaplain Podcast Question from $name";
     $message = "Name: $name\n\nQuestion:\n$question";
-    $headers = "From Chaplain Podcast Form";
+    $headers = "From: Chaplain Podcast Form <chaplain_podcast@nutramaxlabs.com>\r\n";
     $success = mail($to, $subject, $message, $headers);
     if ($success) {
         file_put_contents($log_file, "Mail sent successfully.\n", FILE_APPEND);

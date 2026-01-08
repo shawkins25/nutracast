@@ -1,3 +1,5 @@
+// app/joinDiscussion.js
+
 import { useState, memo } from "react";
 import classes from "./joinDiscussion.module.css";
 
