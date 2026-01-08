@@ -12,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $question = htmlspecialchars($data['question'] ?? 'No question');
     file_put_contents($log_file, "Parsed Name: $name\n", FILE_APPEND);
     file_put_contents($log_file, "Parsed Question: $question\n", FILE_APPEND);
-    $to = "shawkins@nutramaxlabs.com";
+    $to = "amorgan@nutramaxlabs.com";
     $subject = "New Chaplain Podcast Question from $name";
     $message = "Name: $name\n\nQuestion:\n$question";
     $headers = "From Chaplain Podcast Form";
