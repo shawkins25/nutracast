@@ -107,15 +107,15 @@
 
 /* Default: mobile-first layout (Join Discussion comes *after* audio) */
 .audioPlayer {
-  order: 1;
-}
-
-.episodesList {
   order: 2;
 }
 
-.joinDiscussion {
+.episodesList {
   order: 3;
+}
+
+.joinDiscussion {
+  order: 1;
 }
 
 .section h2 {
@@ -446,18 +446,5 @@
   .section_container {
     flex-direction: row;
     align-items: stretch;
-  }
-
-  /* Desktop: reverse the order so Join Discussion is on the left */
-  .joinDiscussion {
-    order: 1;
-  }
-
-  .audioPlayer {
-    order: 2;
-  }
-
-  .episodesList {
-    order: 3;
   }
 }

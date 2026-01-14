@@ -13,7 +13,7 @@ const JoinDiscussion = () => {
     if (isSubmitting) return;
     setIsSubmitting(true);
     try {
-      const res = await fetch("send-question.php", {
+      const res = await fetch("/send-question.php", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -49,7 +49,8 @@ const JoinDiscussion = () => {
   };
   return (
     <div className={classes.container}>
-      <h2 className={classes.heading}>Join the Discussion!</h2>
+      <h2 className={classes.heading}>Have a question?</h2>
+      <h4 className={classes.heading}>Join the Discussion!</h4>
       <form onSubmit={handleSubmit} className={classes.form}>
         <label htmlFor="name">Name (Optional):</label>
         <input
