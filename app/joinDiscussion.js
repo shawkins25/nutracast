@@ -50,7 +50,7 @@ const JoinDiscussion = () => {
   return (
     <div className={classes.container}>
       <h2 className={classes.heading}>Have a question?</h2>
-      <h4 className={classes.heading}>Join the Discussion!</h4>
+      <p className={classes.sub_heading}>Share your question, a topic idea you'd like us to explore, or a comment for the podcast</p>
       <form onSubmit={handleSubmit} className={classes.form}>
         <label htmlFor="name">Name (Optional):</label>
         <input

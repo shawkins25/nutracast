@@ -15,7 +15,7 @@
   width: 100%;
 }
 
-.container{
+.container {
   padding: 5% 0;
 }
 
@@ -435,13 +435,13 @@
 }
 
 @media (min-width: 1200px) {
-.page {
-  min-height: 100vh;
-}
-
-.container{
+  .page {
     min-height: 100vh;
-}
+  }
+
+  .container {
+    min-height: 100vh;
+  }
 
   .section_container {
     flex-direction: row;
